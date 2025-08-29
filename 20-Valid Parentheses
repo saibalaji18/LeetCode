@@ -1,0 +1,23 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+
+        d = {
+            "]" : "[",
+            "}" : "{",
+            ")" : "("
+        }
+
+        ans = []
+        for i in range(len(s)):
+            if s[i] in d.values():
+                ans.append(s[i])
+            elif s[i] in d and ans and ans[-1] == d[s[i]]:
+                ans.pop()
+            else:
+                return False
+
+        if not ans:
+            return True
+        else:
+            return False 
+        
