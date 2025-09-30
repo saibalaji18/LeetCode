@@ -1,0 +1,10 @@
+import pandas as pd
+
+def duplicate_emails(person: pd.DataFrame) -> pd.DataFrame:
+    duplicates = person[person["email"].duplicated(keep=False)]
+    
+    # Drop duplicate email rows and rename the column
+    result = duplicates[["email"]].drop_duplicates().reset_index(drop=True)
+    result.rename(columns={"email": "Email"}, inplace=True)
+    
+    return result
