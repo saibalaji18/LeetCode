@@ -1,0 +1,12 @@
+import pandas as pd
+
+person = pd.DataFrame({
+    'id': [10, 20, 30, 40],
+    'email': ['a@b.com', 'c@d.com', 'a@b.com', 'e@f.com']
+})
+
+unique_emails_df = person[["email"]].drop_duplicates(keep='first').reset_index(drop=True) 
+unique_emails_df.index += 1
+unique_emails_df.index.name = 'id'
+
+print(unique_emails_df)
