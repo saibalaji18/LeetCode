@@ -1,0 +1,12 @@
+import pandas as pd
+
+def find_employees(employee: pd.DataFrame) -> pd.DataFrame:
+    merged = pd.merge(
+        employee,
+        employee,
+        left_on = "id",
+        right_on = "managerId",
+        suffixes = ("_mgr","_emp")
+    )
+    result = merged[merged["salary_emp"]>merged["salary_mgr"]]
+    return result[["name_emp"]].rename(columns={"name_emp":"Employee"})
