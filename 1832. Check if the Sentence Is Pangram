@@ -1,0 +1,6 @@
+class Solution:
+    def checkIfPangram(self, sentence: str) -> bool:
+        count = [0] * 26
+        for i in range(len(sentence)):
+            count[ord(sentence[i])-97] += 1
+        return True if all(x>0 for x in count) else False
